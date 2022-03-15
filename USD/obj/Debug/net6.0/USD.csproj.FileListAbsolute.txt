@@ -1,0 +1,15 @@
+C:\Users\Даниил\source\repos\USD\USD\bin\Debug\net6.0\USD.exe
+C:\Users\Даниил\source\repos\USD\USD\bin\Debug\net6.0\USD.deps.json
+C:\Users\Даниил\source\repos\USD\USD\bin\Debug\net6.0\USD.runtimeconfig.json
+C:\Users\Даниил\source\repos\USD\USD\bin\Debug\net6.0\USD.dll
+C:\Users\Даниил\source\repos\USD\USD\bin\Debug\net6.0\USD.pdb
+C:\Users\Даниил\source\repos\USD\USD\obj\Debug\net6.0\USD.csproj.AssemblyReference.cache
+C:\Users\Даниил\source\repos\USD\USD\obj\Debug\net6.0\USD.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Даниил\source\repos\USD\USD\obj\Debug\net6.0\USD.AssemblyInfoInputs.cache
+C:\Users\Даниил\source\repos\USD\USD\obj\Debug\net6.0\USD.AssemblyInfo.cs
+C:\Users\Даниил\source\repos\USD\USD\obj\Debug\net6.0\USD.csproj.CoreCompileInputs.cache
+C:\Users\Даниил\source\repos\USD\USD\obj\Debug\net6.0\USD.dll
+C:\Users\Даниил\source\repos\USD\USD\obj\Debug\net6.0\refint\USD.dll
+C:\Users\Даниил\source\repos\USD\USD\obj\Debug\net6.0\USD.pdb
+C:\Users\Даниил\source\repos\USD\USD\obj\Debug\net6.0\USD.genruntimeconfig.cache
+C:\Users\Даниил\source\repos\USD\USD\obj\Debug\net6.0\ref\USD.dll
