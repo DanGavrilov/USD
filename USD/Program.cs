@@ -48,7 +48,11 @@ namespace USD
             }
 
         }
-       
+       public static async Task<string> Readtxt(string path)
+        { 
+            string line = await File.ReadAllTextAsync(path);
+            return line;
+       }
     
         public static async Task Main()
         {
@@ -57,7 +61,7 @@ namespace USD
 
             var days = new List<DateTime>();
             var UAHtoUSD = new List<float>();
-            int days_n = 365;
+            int days_n = 1;
             for (int i = 0; i < days_n; i++)
             {
                 date = date.AddDays(1);
@@ -90,10 +94,11 @@ namespace USD
             USD file = new();
             var UAHtoUSD_ = new List<string>();
             string  v = "\n";
-            await file.Savetofile(String.Join(v, FromTwotoOne(UAHtoUSD,days, days_n)), days_n);
-            Console.WriteLine(SearchMin(UAHtoUSD, days, days_n));
             
-
+            await file.Savetofile(String.Join(v, FromTwotoOne(UAHtoUSD,days, days_n)), days_n);
+            
+            string text = await Readtxt(@"C:\Users\usd.txt");
+            Console.WriteLine(text);
 
 
 
