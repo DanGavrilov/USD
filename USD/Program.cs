@@ -39,36 +39,24 @@ namespace USD
                 var prods = await prodResp.Content.ReadAsStringAsync();
                 return prods;
             }
-            public async Task<string> Savetofile(string UAH, int n)
-            {
-                string path = @"C:\Users\usd.txt";
-                FileInfo file = new(path);               
-                await File.AppendAllTextAsync(path, UAH);
-                return "oo";
-            }
+      
 
         }
-       public static async Task<string> Readtxt(string path)
-        { 
-            string line = await File.ReadAllTextAsync(path);
-            return line;
-       }
-    
-        public static async Task Main()
+        public static async Task<string> Savetofile( int days_n)
         {
             DateTime date = new DateTime(2021, 1, 1);
             USD us = new();
 
             var days = new List<DateTime>();
             var UAHtoUSD = new List<float>();
-            int days_n = 1;
             for (int i = 0; i < days_n; i++)
             {
                 date = date.AddDays(1);
                 var response = await us
                .GetJsonData($"https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?valcode=usd&date={date.ToString("yyyyMMdd")}&json");
-                
-                try {
+
+                try
+                {
                     var strdollar = $"    {response[43]}{response[44]},{response[46]}{response[47]}     ";
                     float usd = float.Parse(strdollar);
                     days.Add(date);
@@ -86,16 +74,25 @@ namespace USD
                     Console.WriteLine(date);
                     Console.WriteLine(usd);
                 }
-               
-
 
 
             }
-            USD file = new();
-            var UAHtoUSD_ = new List<string>();
-            string  v = "\n";
+            string path = @"C:\Users\usd.txt";
+            FileInfo file = new(path);
+            string UAH = String.Join("\n", FromTwotoOne(UAHtoUSD, days, days_n), days_n);
+            await File.AppendAllTextAsync(path, UAH);
             
-            await file.Savetofile(String.Join(v, FromTwotoOne(UAHtoUSD,days, days_n)), days_n);
+            return "";
+        }
+        public static async Task<string> Readtxt(string path)
+        { 
+            string line = await File.ReadAllTextAsync(path);
+            return line;
+       }
+    
+        public static async Task Main()
+        {
+            
             
             string text = await Readtxt(@"C:\Users\usd.txt");
             Console.WriteLine(text);
@@ -103,17 +100,6 @@ namespace USD
 
 
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
