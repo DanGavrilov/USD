@@ -9,30 +9,26 @@ namespace USD
     internal class Program
     {
 
-
-        public static float BubleSort(List<float> collection, List<DateTime> days, int n)
+        public static List<string> FromTwotoOne(List<float> first, List<DateTime> second , int n)
         {
-            float temp = 0;
-            DateTime day = new();
-            for (int write = 0; write < n; write++)
+            var BaseUsd = new List<string>();
+            for (int i = 0; i < n; i++)
             {
-                for (int sort = 0; sort < n - 1; sort++)
-                {
-                    if (collection[sort] > collection[sort + 1])
-                    {
-                        temp = collection[sort + 1];
-                        day = days[sort + 1];
-                        days[sort + 1] = days[sort];
-                        days[sort] = day;
-                        collection[sort + 1] = collection[sort];
-                        collection[sort] = temp;
-                    }
-                }
-
+                BaseUsd.Add(second[i].ToString());
+                BaseUsd.Add(first[i].ToString());
+            }
+            return BaseUsd;
+        }
+        public static float SearchMin(List<float> collection, List<DateTime> days, int n)
+        {
+            int min = 0;
+            for (int i = 0; i<n; i++)
+            {
+                if (collection[i] < collection[min]) { min = i; }
             }
             Console.WriteLine();
-            Console.WriteLine(days[0]);
-            return collection[0];
+            Console.WriteLine(days[min]);
+            return collection[min];
         }
         public class USD
         {
@@ -43,11 +39,20 @@ namespace USD
                 var prods = await prodResp.Content.ReadAsStringAsync();
                 return prods;
             }
+            public async Task<string> Savetofile(string UAH, int n)
+            {
+                string path = @"C:\Users\usd.txt";
+                FileInfo file = new(path);               
+                await File.AppendAllTextAsync(path, UAH);
+                return "oo";
+            }
 
         }
+       
+    
         public static async Task Main()
         {
-            DateTime date = new DateTime(2020, 1, 1);
+            DateTime date = new DateTime(2021, 1, 1);
             USD us = new();
 
             var days = new List<DateTime>();
@@ -82,8 +87,13 @@ namespace USD
 
 
             }
+            USD file = new();
+            var UAHtoUSD_ = new List<string>();
+            string  v = "\n";
+            await file.Savetofile(String.Join(v, FromTwotoOne(UAHtoUSD,days, days_n)), days_n);
+            Console.WriteLine(SearchMin(UAHtoUSD, days, days_n));
+            
 
-            Console.WriteLine(BubleSort(UAHtoUSD, days, days_n));
 
 
 
