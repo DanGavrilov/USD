@@ -85,7 +85,7 @@ namespace USD
             string path_date = @"C:\Users\date_only.txt";
             string date_str = String.Join("\n", days );
             await File.AppendAllTextAsync(path_date, date_str);
-            return "0";
+            return "1";
         }
         public static async Task<string> Readtxt(string path)
         {
