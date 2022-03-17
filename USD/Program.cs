@@ -85,7 +85,7 @@ namespace USD
             string path_date = @"C:\Users\date_only.txt";
             string date_str = String.Join("\n", days );
             await File.AppendAllTextAsync(path_date, date_str);
-            return "";
+            return "0";
         }
         public static async Task<string> Readtxt(string path)
         {
@@ -101,9 +101,7 @@ namespace USD
             string datetxt = await Readtxt(@"C:\Users\date_only.txt");
             var ListofUS = text.Split("\n");
             var Listofdates = datetxt.Split("\n");  
-            var USD = new List<float>();
-          
-              
+            var USD = new List<float>();        
             for (int i = 0; i < 365; i++) { USD.Add(float.Parse(ListofUS[i]));  }
             Console.WriteLine(Listofdates[SearchMin(USD,365)]);
             Console.WriteLine(USD[SearchMin(USD,365)]);
