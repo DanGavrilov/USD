@@ -19,16 +19,14 @@ namespace USD
             }
             return BaseUsd;
         }
-        public static float SearchMin(List<float> collection, List<DateTime> days, int n)
+        public static int SearchMin(List<float> collection,  int n)
         {
             int min = 0;
             for (int i = 0; i<n; i++)
             {
                 if (collection[i] < collection[min]) { min = i; }
             }
-            Console.WriteLine();
-            Console.WriteLine(days[min]);
-            return collection[min];
+            return min;
         }
         public class USD
         {
@@ -79,26 +77,36 @@ namespace USD
             }
             string path = @"C:\Users\usd.txt";
             FileInfo file = new(path);
-            string UAH = String.Join("\n", FromTwotoOne(UAHtoUSD, days, days_n), days_n);
+            string UAH = String.Join("\n", FromTwotoOne(UAHtoUSD, days, days_n));
+            string path_onlyUS = @"C:\Users\usd_only.txt";
             await File.AppendAllTextAsync(path, UAH);
-            
+            string US = String.Join("\n", UAHtoUSD);
+            await File.AppendAllTextAsync(path_onlyUS, US);
+            string path_date = @"C:\Users\date_only.txt";
+            string date_str = String.Join("\n", days );
+            await File.AppendAllTextAsync(path_date, date_str);
             return "";
         }
         public static async Task<string> Readtxt(string path)
-        { 
+        {
+          
             string line = await File.ReadAllTextAsync(path);
             return line;
        }
     
         public static async Task Main()
         {
-            
-            
-            string text = await Readtxt(@"C:\Users\usd.txt");
-            Console.WriteLine(text);
-
-
-
+     
+            string text = await Readtxt(@"C:\Users\usd_only.txt");
+            string datetxt = await Readtxt(@"C:\Users\date_only.txt");
+            var ListofUS = text.Split("\n");
+            var Listofdates = datetxt.Split("\n");  
+            var USD = new List<float>();
+            int n = 0;
+              
+            for (int i = 0; i < 365; i++) { USD.Add(float.Parse(ListofUS[i]));  }
+            Console.WriteLine(Listofdates[SearchMin(USD,365)]);
+            Console.WriteLine(USD[SearchMin(USD,365)]);
         }
 
 
