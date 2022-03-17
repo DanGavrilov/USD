@@ -102,13 +102,12 @@ namespace USD
             var ListofUS = text.Split("\n");
             var Listofdates = datetxt.Split("\n");  
             var USD = new List<float>();
-            int n = 0;
+          
               
             for (int i = 0; i < 365; i++) { USD.Add(float.Parse(ListofUS[i]));  }
             Console.WriteLine(Listofdates[SearchMin(USD,365)]);
             Console.WriteLine(USD[SearchMin(USD,365)]);
         }
-
 
     }
 }
