@@ -32,94 +32,23 @@ namespace USD
         public static float MidinMonth(List<float> usd, List<DateTime> dates)
 
         {
-            float sum_january = 0;
-            float sum_february = 0;
-            float sum_march = 0;
-            float sum_april = 0;
-            float sum_may = 0;
-            float sum_june = 0;
-            float sum_jule = 0;
-            float sum_august = 0;
-            float sum_september = 0;
-            float sum_october = 0;
-            float sum_november = 0;
-            float sum_december = 0;
+            
+            float[] sum = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }; 
             for (int i = 0; i<365; i++)
             {
-               
-                if (dates[i].ToString("dd.MM.yyyy") == dates[i].ToString("dd.01.yyyy"))
-                { 
-                   sum_january += usd[i];
-                }
-                else if(dates[i].ToString("dd.MM.yyyy") == dates[i].ToString("dd.02.yyyy"))
-                {
-                    sum_february += usd[i];
-                }
-                else if (dates[i].ToString("dd.MM.yyyy") == dates[i].ToString("dd.03.yyyy"))
-                {
-                    sum_march += usd[i];
-                }
-                else if (dates[i].ToString("dd.MM.yyyy") == dates[i].ToString("dd.04.yyyy"))
-                {
-                    sum_april += usd[i];
-                }
-                else if (dates[i].ToString("dd.MM.yyyy") == dates[i].ToString("dd.05.yyyy"))
-                {
-                    sum_may += usd[i];
-                }
-                else if (dates[i].ToString("dd.MM.yyyy") == dates[i].ToString("dd.06.yyyy"))
-                {
-                    sum_june += usd[i];
-                }
-                else if (dates[i].ToString("dd.MM.yyyy") == dates[i].ToString("dd.07.yyyy"))
-                {
-                    sum_jule += usd[i];
-                }
-                else if (dates[i].ToString("dd.MM.yyyy") == dates[i].ToString("dd.08.yyyy"))
-                {
-                    sum_august += usd[i];
-                }
-                else if (dates[i].ToString("dd.MM.yyyy") == dates[i].ToString("dd.09.yyyy"))
-                {
-                    sum_september += usd[i];
-                }
-                else if (dates[i].ToString("dd.MM.yyyy") == dates[i].ToString("dd.10.yyyy"))
-                {
-                    sum_october += usd[i];
-                }
-                else if (dates[i].ToString("dd.MM.yyyy") == dates[i].ToString("dd.11.yyyy"))
-                {
-                    sum_november += usd[i];
-                }
-                else if (dates[i].ToString("dd.MM.yyyy") == dates[i].ToString("dd.12.yyyy"))
-                {
-                    sum_december += usd[i];
-                }
+                string number_month = dates[i].ToString("MM");
+                int number = int.Parse(number_month) - 1;
+                sum[number] += usd[i]; 
+                             
             }
-            Console.WriteLine("January:");
-            Console.WriteLine(sum_january/31);
-            Console.WriteLine("February:");
-            Console.WriteLine(sum_february/28);
-            Console.WriteLine("March:");
-            Console.WriteLine(sum_march/31);
-            Console.WriteLine("April:");
-            Console.WriteLine(sum_april/30);
-            Console.WriteLine("May:");
-            Console.WriteLine(sum_may/31);
-            Console.WriteLine("June:");
-            Console.WriteLine(sum_june/30);
-            Console.WriteLine("Jule:");
-            Console.WriteLine(sum_jule/31);
-            Console.WriteLine("August:");
-            Console.WriteLine(sum_august/31);
-            Console.WriteLine("September:");
-            Console.WriteLine(sum_september/30);
-            Console.WriteLine("October:");
-            Console.WriteLine(sum_october/31);
-            Console.WriteLine("November:");
-            Console.WriteLine(sum_november/31);
-            Console.WriteLine("December:");
-            Console.WriteLine(sum_december/31);
+            float[] midinmonth = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            for (int i = 0; i < 12; i++)
+            {
+                midinmonth[i] = sum[i] / System.DateTime.DaysInMonth(2021, i + 1);
+                Console.WriteLine(i + 1);
+                Console.WriteLine(midinmonth[i]);
+
+            }
 
             return 1;
         }
